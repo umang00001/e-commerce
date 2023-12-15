@@ -16,17 +16,16 @@ connectDb();
 //rest object
 const app = express();
 
+
+
+
+
+
+app.use(express.static(path.join(__dirname, "./client/build")))
 //middlewares
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
-
-app.use(express.static(path.join(__dirname, "./client/build")))
-
-// app.get("*", function (req, resp) {
-//   resp.sendFile(path.join(__dirname, "./client/build/index.html"))
-// })
-
 
 
 //routes
@@ -35,6 +34,9 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/product", productRoute)
 
+app.use("/*", function (req, resp) {
+  resp.sendFile(path.join(__dirname, "./client/build/index.html"))
+})
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
