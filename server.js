@@ -23,9 +23,13 @@ app.use(express.static("public"));
 
 app.use(express.static(path.join(__dirname, "./client/build")))
 
+<<<<<<< HEAD
 // app.get("*", function (req, resp) {
 //   resp.sendFile(path.join(__dirname, "./client/build/index.html"))
 // })
+=======
+
+>>>>>>> 9bb7fee299045cd6b9e7cdcdcadfc11e454f5005
 
 
 
