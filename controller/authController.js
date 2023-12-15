@@ -156,7 +156,6 @@ const updateProfileController = async (req, resp) => {
     try {
         let { email, name, password, address, phone } = req.body
         if (password) {
-
             password = await authHelper.hashPassword(password)
         }
         const user = await userModel.findByIdAndUpdate(req.user._id,

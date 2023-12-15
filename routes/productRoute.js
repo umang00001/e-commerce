@@ -78,7 +78,7 @@ router.get("/get-image/:image", getImageController);
 //delete product admin
 router.delete("/delete-product/:pid", requireSign, isAdmin, deleteProductController)
 //update product admin
-router.put("/update-product/:pid", requireSign, isAdmin, updateProductController)
+router.post("/update-product/:pid", requireSign, isAdmin, upload, updateProductController)
 //filter product
 router.post("/filter-product", filterProductController);
 // product count

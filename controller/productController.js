@@ -141,9 +141,7 @@ const deleteProductController = async (req, resp) => {
 //update product
 const updateProductController = async (req, resp) => {
     try {
-        // console.log(req.body)
-        console.log(req.file)
-        return false
+        console.log(req.body)
         const { name, description, price, category, quantity } = req.body;
         const photo = req.file
         console.log(photo)
@@ -168,7 +166,7 @@ const updateProductController = async (req, resp) => {
         const product = await productModel.findByIdAndUpdate(req.params.pid, { name, description, price, category, quantity, slug: slugify(name), photo: photo.filename }, { new: true })
 
         await product.save()
-        resp.status(201).send({
+        resp.status(200).send({
             success: true,
             message: "product update successfully",
             product
@@ -182,7 +180,7 @@ const updateProductController = async (req, resp) => {
         })
     }
 }
-//filter product
+//filter product by price and category
 const filterProductController = async (req, resp) => {
     try {
         const { radio, checked } = req.body
